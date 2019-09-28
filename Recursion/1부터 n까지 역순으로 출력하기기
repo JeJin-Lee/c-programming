@@ -1,0 +1,15 @@
+// 정수 n부터 1까지 출력하는 재귀함수를 설계
+
+#include <stdio.h>
+int recur(int n){
+    if(n==0)                   
+    return ;
+    
+    printf("%d\n", n);
+    return recur(n-1);
+}
+int main(){
+    int num;
+    scanf("%d", &num);
+    recur(num);
+}

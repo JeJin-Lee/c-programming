@@ -1,0 +1,25 @@
+// 1 부터 정수 n까지 출력하는 재귀함수를 설계하시오
+// 조건 : 정수 n이 입력되고, 1부터 n까지 한 줄에 하나씩 출력한다 
+
+#include <stdio.h>
+
+void f(int k)
+{
+	if (k == 0)
+	{
+		return ;
+	}
+	else
+	{
+		f(k-1);
+		printf("%d\n", k);	
+	}
+
+}
+int main()
+{
+	int n;
+	scanf("%d", &n);
+	f(n);
+}
+

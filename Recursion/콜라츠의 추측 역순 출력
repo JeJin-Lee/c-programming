@@ -1,0 +1,22 @@
+#include <stdio.h>
+void f(int n){
+    if(n==1){
+    printf("1\n");
+    return;
+    }
+    
+    if(n%2==0)
+       f(n/2);
+    
+    if(n%2!=0)
+        f(3*n+1);
+    
+    printf("%d\n", n);
+}
+int main(){
+    int n;
+    scanf("%d", &n);
+    f(n);
+}
+
+// 함수가 void 형인 경우, 함수를 return 을 이용해서 호출하면 에러가 난다. 

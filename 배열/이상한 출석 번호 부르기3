@@ -1,0 +1,31 @@
+번호를 부른 횟수(n, 1 ~ 10000)가 첫 줄에 입력된다.
+n개의 랜덤 번호(k, 1 ~ 23)가 두 번째 줄에 공백을 사이에 두고 순서대로 입력된다. 
+
+출석을 부른 번호 중에 가장 빠른 번호를 1개만 출력한다. 
+
+
+입력예시
+10
+10 4 2 3 6 6 7 9 8 5
+
+
+출력예시
+2
+
+#include <stdio.h>
+int main(){
+    int aList[10001] = {0,};
+    int i, min, n;
+    scanf("%d", &n);
+    
+    for(i=1; i<=n; i++){
+        scanf("%d", &aList[i]);
+    }
+    min = aList[1];
+    for(i=1; i<=n; i++){
+        if(min>aList[i])
+            min = aList[i];
+    }
+    
+    printf("%d", min);
+}

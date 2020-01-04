@@ -1,0 +1,60 @@
+#include <stdio.h>
+int main(){
+    int aList[5] = {0,};
+    int i=0, j=0, tmp=0;
+    
+    for(i=0; i<5; i++){
+        scanf("%d", &aList[i]);
+    }
+    
+    for(i=0; i<5; i++){
+        for(j=0; j<4; j++){
+            if(aList[j+1]<aList[j]){
+                tmp = aList[j];
+                aList[j] = aList[j+1];
+                aList[j+1] = tmp;
+            }
+            
+        }
+    }
+    
+    for(i=0; i<5; i++)
+        printf("%d\t", aList[i]);
+    putchar('\n');
+    return 0;
+}
+
+위와 같이 구현해도 정상적으로 실행된다. 하지만 이는 버블정렬이라 하기엔 10,11번 행을 보면 다소 무리가 있다.
+이를 수정하면 다음과 같다.
+
+#include <stdio.h>
+int main(){
+    int aList[5] = {0,};
+    int i=0, j=0, tmp=0;
+    
+    for(i=0; i<5; i++){
+        scanf("%d", &aList[i]);
+    }
+    
+    for(i=4; i>0; i--){
+        for(j=0; j<i; j++){
+            if(aList[j+1]<aList[j]){
+                tmp = aList[j];
+                aList[j] = aList[j+1];
+                aList[j+1] = tmp;
+            }
+            
+        }
+    }
+    
+    for(i=0; i<5; i++)
+        printf("%d\t", aList[i]);
+    putchar('\n');
+    return 0;
+}
+
+처음의 10, 11번 행을 다음과 같이 고치면 된다.
+ for(i=4; i>0; i--){
+        for(j=0; j<i; j++)
+        
+ 

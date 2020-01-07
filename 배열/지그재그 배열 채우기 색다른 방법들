@@ -1,0 +1,55 @@
+첫번째 방법
+#include <stdio.h>
+int main(){
+    int aList[5][5] = {0,};
+    int i=0, j=0, cnt=0, offset = 1;
+    
+    for(i=0; i<5; i++){
+        if(i%2 == 0)    cnt = i*5;
+        else            cnt = (i+1)*5+1;
+        
+        for(j=0; j<5; j++){
+            cnt += offset;
+            aList[i][j] = cnt;
+        }
+        
+        offset = -offset;
+    }
+    
+    for(i=0; i<5; i++){
+        for(j=0; j<5; j++)
+            printf("%d\t", aList[i][j]);
+            
+        printf("\n");
+    }
+    return 0;
+}
+
+2. 플래그를 이용한 방법
+
+#include <stdio.h>
+int main(){
+    int aList[5][5] = {0,};
+    int i=0, j=0, cnt=0, flag=1;
+    
+    for(i=0; i<5; i++){
+        if(flag){
+            for(j=0; j<5; j++)
+            aList[i][j] = ++cnt;
+            flag=0;
+        }
+        else{
+            for(j=0; j<5; j++)
+                aList[i][4-j] = ++cnt;
+                flag=1;
+        }
+    }
+    
+    for(i=0; i<5; i++){
+        for(j=0; j<5; j++)
+            printf("%d\t", aList[i][j]);
+            
+        printf("\n");
+    }
+    return 0;
+}

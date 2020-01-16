@@ -1,0 +1,36 @@
+입력 예시   
+4
+
+출력 예시
+4 5 12 13 
+3 6 11 14 
+2 7 10 15 
+1 8 9 16 
+
+
+#include <stdio.h>
+int main(){
+    int i,j,n;
+    int cnt = 0;
+    scanf("%d", &n);
+    int arr[101][101];
+    
+    for(j=1; j<=n; j++){
+        if(!(j%2)){
+            for(i=1; i<=n; i++){
+                arr[i][j]=++cnt;
+            }
+        }
+        else{
+            for(i=n; i>=1; i--){
+                arr[i][j] = ++cnt;
+            }
+        }
+    }
+    for(i=1; i<=n; i++){
+        for(j=1; j<=n; j++){
+            printf("%d ", arr[i][j]);
+        }
+        printf("\n");
+    }
+}

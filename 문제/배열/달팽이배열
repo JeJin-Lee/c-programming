@@ -1,0 +1,29 @@
+요소가 int형이고 행과 열의 길이가 모두 5인 2차원 배열을 선언하고 모든 요소를 0으로 초기화한 후,
+시계방향 달팽이 형식으로 출력하는 프로그램을 작성하자.
+
+
+#include <stdio.h>
+
+int main()
+{
+    int arr[5][5] = {0,};
+    int x=-1, y=0, cnt=0, i, j, len=9, direction=1;
+    
+    for(len=9; len>0; len-=2){
+        for(i=0; i<len; i++){
+            if(i<len/2+1)   x += direction;
+            else            y += direction;
+            
+            arr[y][x] = ++cnt;
+        }
+        direction = -direction;
+    }
+    
+    for(i=0; i<5; i++){
+        for(j=0; j<5; j++){
+            printf("%d ", arr[i][j]);
+        }
+        printf("\n");
+    }
+    return 0;
+}

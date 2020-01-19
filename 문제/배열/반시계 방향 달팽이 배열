@@ -1,0 +1,43 @@
+반시계 방향으로 출력되는 달팽이 배열을 만들자.
+
+5  4  3  2  1
+6 19 18 17 16
+7 20 25 24 15
+8 21 22 23 14
+9 10 11 12 13
+
+
+
+#include <stdio.h>
+
+int main()
+{
+    int arr[5][5]={0,};
+    int len, i, j, x=5, y=0,cnt=0, direction=-1;
+    
+    for(len=9; len>0; len-=2){
+       
+        for(i=0; i<len; i++){
+            
+            if(i<len/2+1)   x+=direction;
+            
+            else            y-=direction;
+            
+            arr[y][x]=++cnt;
+        }
+        direction = -direction;
+        
+        
+    }
+    
+    for(i=0; i<5; i++){
+       
+        for(j=0; j<5; j++){
+            printf("%d\t",arr[i][j]);
+        }
+       
+        printf("\n");
+    }
+    
+    return 0;
+}

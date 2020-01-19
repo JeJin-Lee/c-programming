@@ -1,0 +1,30 @@
+#include <stdio.h>
+int main(){
+    int arr[100];
+    int i, j, n, Min=0, Tmp=0;
+    scanf("%d", &n);
+    
+    for(i=0; i<n; i++){
+        scanf("%d", &arr[i]);
+    }
+    
+    for(i=0; i<n-1; i++){
+        Min = i;
+        for(j=i+1; j<n; j++){
+            if(arr[Min] > arr[j])
+            Min = j;
+        }
+        
+        if(Min != i){
+            Tmp = arr[Min];
+            arr[Min] = arr[i];
+            arr[i] = Tmp;
+        }
+    }
+    
+    for(i=0; i<n; i++){
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+    return 0;
+}

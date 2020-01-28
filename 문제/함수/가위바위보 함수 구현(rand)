@@ -1,0 +1,40 @@
+난수를 구하는 함수를 사용하여 가위 바위 보 게임을 구현합니다. 0~2 범위의 숫자를 발생시켜서 0은 가위, 1은 바위, 2는 보라고 가정합니다. 
+게임 방식은 사용자로부터 0~2 범위의 정수를 입력받은 후, 이에 대응하는 0~2 범위의 난수를 발생시켜 사용자가 입력한 정보와 비교하는 방식으로 
+게임을 진행합니다. 반드시 사용자, 컴퓨터가 선정한 것이 무엇이며 누가 승자인지 표시해야 합니다
+
+
+
+
+
+include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+void Data(char* ptr, int rsp){
+    if(rsp==0)
+        printf("%s : %s\n", ptr, "가위");
+    else if(rsp==1)
+        printf("%s : %s\n", ptr, "바위");
+    else if(rsp==2)
+        printf("%s : %s\n", ptr, "보");
+}
+
+int main(){
+    srand((unsigned)time(NULL));
+    int user, com;
+    scanf("%d", &user);
+    com = rand()%3;
+    Data("사용자", user);
+    Data("컴퓨터", com);
+    
+    if(user==com){
+        printf("무승부\n");
+    }
+    else if(user-com==-1 || user-com==2){
+        printf("컴퓨터 승리\n");
+    }
+    else if(user-com==1 || user-com==-2){
+        printf("사람 승리\n");
+    }
+    return 0;
+    
+}

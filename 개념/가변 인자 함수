@@ -1,0 +1,78 @@
+#include <stdio.h>
+#include <stdarg.h>
+
+void printNumbers(int args, ...){       // 가변 인자의 개수를 받음, ...으로 가변 인자 설정
+    
+    va_list ap;                       // 가변 인자 목록 포인터     
+    va_start(ap, args);               // 가변 인자 목록 포인터 설정
+    for(int i=0; i<args; i++){
+        int num = va_arg(ap, int);
+        printf("%d ", num);
+    }
+    va_end(ap);                      // 가변 인자 목록 포인터를 NULL로 초기화
+    printf("\n");
+}
+
+int main(){
+    printNumbers(1,10);
+    printNumbers(2,10,20);
+    printNumbers(3,10,20,30);
+    printNumbers(4,10,20,30,40);
+    
+    return 0;
+}
+
+
+va_list : 가변 인자 목록, 가변 인자의 메모리 주소를 저장하는 포인터
+va_start : 가변 인자를 가져올 수 있도록 포인터를 설정
+va_arg : 가변 인자 포인터에서 특정 자료형 크기만큼 값을 가져옴
+va_end : 가변 인자 처리가 끝났을 때 포인터를 NULL로 초기화
+
+
+
+< 자료형이 다른 가변 인자 함수 만들기 >
+
+#include <stdio.h>
+#include <stdarg.h>
+
+void printvalues(char *types, ...){
+    va_list ap;
+    int i=0;
+    
+    va_start(ap, types);
+    while(types[i] != '\0'){
+        switch(types[i]){
+            
+            case 'i';                             //int형일 때, int 크기만큼 값을 가져온다, 그리고 ap를 int 크기만큼 순방향으로 
+                printf("%d ", va_arg(ap, int));
+                break;
+                
+            case 'd';
+                printf("%f ", va_arg(ap, double));
+                break;
+                
+            case 'c';
+                printf("%c ", va_arg(ap, char));
+                break;      
+
+            case 's';
+                printf("%s ", va_arg(ap, char*));
+                break;
+                
+            default:
+                break;
+        }
+        i++;
+    }
+    va_end(ap);
+    printf("\n");
+}
+
+
+int main(){
+    printvalues("i", 10);
+    printvalues("ci", 'a', 10);
+    printvalues("sicd", "Hello World!", 10, 'a', 1.234567);
+    
+    return 0;
+}

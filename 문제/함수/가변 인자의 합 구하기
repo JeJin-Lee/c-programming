@@ -1,0 +1,29 @@
+표준 입력으로 정수 두 개와 세 개가 입력된다. 입력된 정수 두 개의 합과 세 개의 합이 출력되게 만들어라.
+
+#include <stdio.h>
+#include <stdarg.h>
+
+int sum(int args, ...){
+va_list ap;
+int sum=0;
+va_start(ap, args);
+    for(int i=0; i<args; i++){
+        sum += va_arg(ap, int);
+    }
+    va_end(ap);
+    return sum;
+}
+
+int main()
+{
+    int num1, num2;
+    int num3, num4, num5;
+
+    scanf("%d %d", &num1, &num2);
+    scanf("%d %d %d", &num3, &num4, &num5);
+
+    printf("%d\n", sum(2, num1, num2));
+    printf("%d\n", sum(3, num3, num4, num5));
+
+    return 0;
+}

@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <stdlib.h>
+int GCD();
+int main(){
+    int n,num,i,j,gcd;
+    int *arr;
+    scanf("%d", &n);
+    arr = malloc(sizeof(int)*n);
+    memset(arr,0,sizeof(int)*n);
+    
+    for(i=0; i<n; i++){
+        scanf("%d", &num);
+        arr[i]=num;
+    }
+
+    gcd = GCD(arr[0],arr[1]);
+    
+    for(i=2; i<n; i++){
+        gcd = GCD(gcd,arr[i]);
+    }
+    printf("%d",gcd);
+    free(arr);
+}
+
+int GCD(int a, int b){
+    int extra;
+    while(1){
+        if(a==b)
+            return b;
+        extra=a%b;
+        
+        if(extra==0)
+            return b;
+        
+        if(extra!=0){
+            if(extra>b)
+                a=extra;
+            else{
+                a=b;
+                b=extra;
+            }
+        }
+    }
+}

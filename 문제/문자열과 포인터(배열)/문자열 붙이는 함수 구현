@@ -1,0 +1,14 @@
+int stradd(char *dest, char *src){
+    while(*dest){         //dest 문자열을 NULL부분이 나올 때까지 이동한다. (끝부분으로 이동)
+        dest++;
+    }
+    
+    while(*src){         // NULL 뒷부분에 src의 요소 하나씩을 붙인다.
+        *dest = *src;
+        src++;            // 다음 원소로 이동
+        dest++;
+    }
+    
+    *dest = NULL;         // 붙이기를 완료한 후, 가장 뒤에 NULL을 대입함으로써 완성
+    return 1;
+}

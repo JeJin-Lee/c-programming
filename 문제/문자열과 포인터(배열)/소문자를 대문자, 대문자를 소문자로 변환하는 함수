@@ -1,0 +1,18 @@
+#include <stdio.h>
+void str(char *ptr){
+    int i=0;
+
+    while(ptr[i]!=NULL){
+        if(ptr[i]>=65 && ptr<=90)
+            ptr[i] += 32;
+        else
+            ptr[i] -= 32;
+        printf("%c", ptr[i]);
+        i++;
+    }
+}
+int main(){
+    char arr[101];
+    scanf("%s", arr);
+    str(arr);
+}

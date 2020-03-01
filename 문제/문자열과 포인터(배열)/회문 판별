@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+int circular(char *str);
+int main(){
+    char *str;
+    str = malloc(sizeof(char)*1001);
+    scanf("%s", str);
+    
+    printf("%d\n", circular(str));
+}
+
+int circular(char *str){
+    int length=0, i,j, datum_point=0;
+    length = strlen(str);
+    
+    for(i=0; i<length/2; i++){
+        if(str[i]!=str[length-i-1])
+        return 0;
+    }
+    return 1;
+}

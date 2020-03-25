@@ -1,0 +1,29 @@
+/* #define */
+#include <stdio.h>
+#define VAR 10
+int main() {
+  char arr[VAR] = {"hi"};
+  printf("%s\n", arr);
+  return 0;
+}
+
+// #define 매크로이름 값
+소스 코드에서 '매크로이름' 에 해당하는 부분을 '값' 으로 대체하게 된다. 
+물론, 전처리기 명령이기 때문에 컴파일 이전에 정확하게 대체된다.
+
+
+
+/* ifdef */
+#include <stdio.h>
+#define A
+int main() {
+#ifdef A
+printf("AAAA \n");
+#endif
+#ifdef B
+printf("BBBB \n");
+#endif
+  return 0;
+}
+ifdef 는 endif 와 짝을 지어서 사용하는데, ifdef 에서 지정한 매크로가 정의되어 있다면 
+ifdef 와 endif 속에 있는 코드가 포함되고 그렇지 않다면 코드에 포함되지 않는 것으로 간주된다. 

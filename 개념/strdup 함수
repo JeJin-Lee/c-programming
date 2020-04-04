@@ -1,0 +1,13 @@
+문자열을 복사하는 함수, strcpy와는 달리 새로운 메모리를 할당하고, 문자열 S를 복사한 후, 그 포인터를 리턴한다.
+
+char *strdup(char *s){
+  char *p;
+  p = malloc(strlen(s)+1);                  // 메모리 할당 크기는 문자열 길이 + 1
+  if(p!=NULL)
+    strcpy(p,s);
+  return p;
+}
+
+
+헤더파일 string.h에 포함되어 있다.
+원형 : char* strdup(const char *str);

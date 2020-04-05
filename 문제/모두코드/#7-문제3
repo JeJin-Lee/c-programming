@@ -1,0 +1,19 @@
+1000 이하의 3 또는 5 의 배수인 자연수들의 합을 구한다.
+
+#include <stdio.h>
+int main(){
+    int cnt=0;
+    int sum=0;
+    
+    while(cnt<=30){
+        if(cnt%3==0)
+            sum+=cnt;
+        if(cnt%5==0)
+            sum+=cnt;
+        if(cnt%15==0)
+            sum-=cnt;
+        cnt++;
+    }
+    printf("%d", sum);
+    return 0;
+}

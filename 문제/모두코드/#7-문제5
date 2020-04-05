@@ -1,0 +1,13 @@
+사용자로 부터 N 값을 입력 받고 1 부터 N 까지의 곱을 출력한다.
+#include <stdio.h>
+int main(){
+    int n, cnt=1;
+    scanf("%d", &n);
+    int sum=1;
+    while(cnt<=n){
+        sum*=cnt;
+        cnt++;
+    }
+    printf("%d", sum);
+    return 0;
+}

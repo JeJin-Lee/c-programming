@@ -1,0 +1,34 @@
+공백이 포함된 문자를 입력 받았을 때, 이를 공백을 제외하고 압축한 배열로 만드는 것이다
+예를 들어, HELLO     WORLD    ! 를 입력받으면
+          HELLO WORLD! 가 되게 하는 것, (단 단어들 사이의 띄어쓰기를 위한 공백은 제외하지 않는다. 또한 문자열의 끝에는 NULL 문자 추가)
+          
+          #include <stdio.h>
+#include <ctype.h>          // white space 문자인지 검사하는 isspace 함수 제공
+
+int main(){
+    char line[80];
+    while(1){
+        printf("$ ");
+        int length = read_line_with_compression(line, 80);
+        printf("%s:%d\n", line, length);
+    }
+    return 0;
+}
+
+int read_line_with_compression(char compressed[], int limit){
+    int ch, i=0;
+    while((ch = getchar()) != '\n'){
+        if(i<limit-1 && (!isspace(ch) || i>0 && !isspace(compressed[i-1])))
+                                                            /* i<limit-1이어야 마지막에 null 추가할 수 있다, 또한 입력한 것이 공백이 아니거나,
+                                                            i>0일 때 그 전에 입력받은게 공백이 아니라면 문자를 배열에 저장해 줌 */
+            compressed[i++] = ch;
+    }
+    
+    if(i>0 && isspace(compressed[i-1])) //  마지막 문자가 공백이면
+        i--;            // 가장 마지막으로 저장된게 공백문자라면, 1 줄여주고
+    compressed[i] = '\0';   // NULL 추가해줌
+    return i;
+    
+}
+
+

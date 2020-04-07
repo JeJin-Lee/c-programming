@@ -1,0 +1,25 @@
+임의의 자연수 N 을 입력 받아 N 을 소인수 분해 한 결과를 출력하여라. 예를 들어서 N = 18 일 경우
+
+N = 18이면 2 * 3 * 3
+
+#include <stdio.h>
+int main(){
+    int arr[100]={0,};
+    int n, i=2,j=0;
+    scanf("%d", &n);
+    while(n>1){
+        if(n%i==0){
+            arr[j]=i;
+            j++;
+            n /= i;
+            i=2;
+        }
+        else
+            i++;
+    }
+    for(int k=0; k<j; k++)
+        if(k<=j-2)
+            printf("%d*", arr[k]);
+        else
+            printf("%d", arr[k]);
+}

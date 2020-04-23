@@ -1,0 +1,15 @@
+1 부터 n 까지의 합을 구하는 함수를 작성해보세요
+
+#include <stdio.h>
+int sum(int n){
+    int sum=0, i;
+    for(i=1; i<=n; i++)
+        sum+=i;
+    return sum;
+}
+int main(){
+    int n;
+    scanf("%d", &n);
+    printf("%d\n", sum(n));
+    return 0;
+}

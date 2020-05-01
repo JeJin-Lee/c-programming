@@ -1,0 +1,17 @@
+#include <stdio.h>
+#define MAX 1000
+int main(){
+    int arr[MAX]={0,};
+    int a,b,i,j;
+    scanf("%d %d", &a, &b);                     // 두 수 a,b를 입력받는다.
+    
+    for(i=2; i<=b; i++){
+        if(!arr[i]){                            // 배열 값이 1이라면, 어떤 수의 배수이므로, 내부 반복문을 시행하지 않는다.
+            for(j=i+i; j<=b; j+=i){             // 배열 값이 0이라면, 그 수는 소수, 초기 식 j=i+i로 설정하여 i의 배수가 저장된
+                arr[j]=1;                       // 배열을 1로 바꾼다.
+            }
+        }
+        if(i>=a && arr[i]==0)                   // 배열 값이 0이라면 소수이므로, 이를 출력한다.
+            printf("%d ", i);
+    }
+}
